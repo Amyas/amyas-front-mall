@@ -33,10 +33,10 @@
 }
 
 .nav-item {
-  flex: 1;
-  display: flex;
+  @include horVerCenter;
+
   flex-direction: column;
-  align-items: center;
+  flex: 1;
   justify-content: center;
   color: #9a9a9a;
 
