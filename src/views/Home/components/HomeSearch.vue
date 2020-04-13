@@ -12,6 +12,8 @@
   left: 0;
   top: 0;
   padding: 17px;
+  z-index: 10;
+  background-color: #fff;
 }
 
 .home-search__content {

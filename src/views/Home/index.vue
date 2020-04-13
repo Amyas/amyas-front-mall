@@ -8,14 +8,24 @@
     <!-- 搜索 -->
     <HomeSearch />
 
-    <div class="home__container" style="height: 2000px;"></div>
+    <!-- 轮播 -->
+    <HomeSwiper />
+
+    <!-- 商品列表 -->
+    <HomeGoods />
+
   </div>
 </template>
 <script>
 import HomeSearch from './components/HomeSearch'
+import HomeSwiper from './components/HomeSwiper'
+import HomeGoods from './components/HomeGoods'
+
 export default {
   components: {
-    HomeSearch
+    HomeSearch,
+    HomeSwiper,
+    HomeGoods
   }
 }
 </script>
