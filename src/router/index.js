@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-/* 个人中心 */const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home')
+/* 首页 */const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home')
+/* 分类 */const Category = () => import(/* webpackChunkName: "category" */ '@/views/Category')
 
 Vue.use(VueRouter)
 
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: Category
   }
 ]
 
