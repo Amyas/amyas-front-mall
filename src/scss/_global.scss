@@ -1,0 +1,21 @@
+@import 'normalize.css';
+@import 'nprogress/nprogress.css';
+
+html {
+  height: 100%;
+  font-family: SanFrancisco, Roboto, PingFang SC, SourceHanSansCN;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: none;
+}
+
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+div {
+  box-sizing: border-box;
+}
