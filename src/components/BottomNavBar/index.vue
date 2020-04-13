@@ -29,6 +29,7 @@
   width: 100%;
   height: 113px;
   padding: 0 70px;
+  background-color: #fff;
   box-shadow: 0 -11px 32px rgba(0, 0, 0, 0.08);
 }
 

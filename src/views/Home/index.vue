@@ -30,6 +30,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.home {
+  padding-bottom: 150px;
+}
+
 .home__header {
   @include horVerCenter;
 
