@@ -7,7 +7,11 @@ import { sync } from 'vuex-router-sync'
 // 公用样式
 import '@/scss/index.scss'
 
+// Vant
+import registerVant from './libs/vant'
+
 sync(store, router)
+registerVant(Vue)
 
 Vue.config.productionTip = false
 

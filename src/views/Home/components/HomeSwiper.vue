@@ -1,92 +1,35 @@
 <template>
-  <div class="home-swiper">
-    <Swiper
-      ref="homeSwiper"
-      class="home-swiper__container"
-      :options="swiperOptions">
-      <SwiperSlide>
-        <div class="swiper__content">
-          <img
-            class="swiper__content__img"
-            src="https://resource.smartisan.com/resource/a69930eeb4f076e8350ae0d25bec300d.png?x-oss-process=image/resize,w_750/format,webp"
-            alt="">
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div class="swiper__content">
-          <img
-            class="swiper__content__img"
-            src="https://resource.smartisan.com/resource/a69930eeb4f076e8350ae0d25bec300d.png?x-oss-process=image/resize,w_750/format,webp"
-            alt="">
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div class="swiper__content">
-          <img
-            class="swiper__content__img"
-            src="https://resource.smartisan.com/resource/a69930eeb4f076e8350ae0d25bec300d.png?x-oss-process=image/resize,w_750/format,webp"
-            alt="">
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div class="swiper__content">
-          <img
-            class="swiper__content__img"
-            src="https://resource.smartisan.com/resource/a69930eeb4f076e8350ae0d25bec300d.png?x-oss-process=image/resize,w_750/format,webp"
-            alt="">
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div class="swiper__content">
-          <img
-            class="swiper__content__img"
-            src="https://resource.smartisan.com/resource/a69930eeb4f076e8350ae0d25bec300d.png?x-oss-process=image/resize,w_750/format,webp"
-            alt="">
-        </div>
-      </SwiperSlide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </Swiper>
-  </div>
+  <VanSwipe
+    class="home-swiper"
+    :autoplay="3000"
+    indicator-color="white">
+    <VanSwipeItem
+      v-for="(image, index) in images"
+      :key="index">
+      <img v-lazy="image" />
+    </VanSwipeItem>
+  </VanSwipe>
 </template>
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
-
 export default {
-  components: {
-    Swiper,
-    SwiperSlide
-  },
   data () {
     return {
-      swiperOptions: {
-        autoplay: true,
-        pagination: {
-          el: '.swiper-pagination'
-        }
-      }
+      images: [
+        'http://images.baixingliangfan.cn/advertesPicture/20180407/20180407175040_1780.jpg',
+        'http://images.baixingliangfan.cn/advertesPicture/20180407/20180407175111_9509.jpg'
+      ]
     }
   }
 }
 </script>
 <style lang="scss" scoped>
 .home-swiper {
-  height: 350px;
-  margin-top: 17px;
-  margin-bottom: 33px;
-}
-
-.home-swiper__container {
-  width: 100%;
-  height: 350px;
-}
-
-.swiper__content {
-  padding: 0 25px;
+  height: 400px;
 
   img {
     width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 }
-
 </style>

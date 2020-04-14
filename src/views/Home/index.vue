@@ -1,46 +1,35 @@
 <template>
   <div class="home">
-    <!-- 头部 -->
-    <div class="home__header">
-      <figure class="iconfont iconchuizi"></figure>
-    </div>
 
     <!-- 搜索 -->
-    <HomeSearch />
+    <VanSearch placeholder="请输入搜索关键词" />
 
     <!-- 轮播 -->
     <HomeSwiper />
 
-    <!-- 商品列表 -->
+    <!-- 分类 -->
+    <HomeCategory />
+
+    <!-- 热卖商品 -->
     <HomeGoods />
 
   </div>
 </template>
 <script>
-import HomeSearch from './components/HomeSearch'
 import HomeSwiper from './components/HomeSwiper'
+import HomeCategory from './components/HomeCategory'
 import HomeGoods from './components/HomeGoods'
-
 export default {
   components: {
-    HomeSearch,
     HomeSwiper,
+    HomeCategory,
     HomeGoods
   }
 }
 </script>
+
 <style lang="scss" scoped>
 .home {
-  padding-bottom: 150px;
-}
-
-.home__header {
-  @include horVerCenter;
-
-  height: 71px;
-
-  .iconfont {
-    font-size: 40px;
-  }
+  padding-bottom: 130px;
 }
 </style>
