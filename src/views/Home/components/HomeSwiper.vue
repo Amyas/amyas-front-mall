@@ -6,7 +6,11 @@
     <VanSwipeItem
       v-for="(image, index) in images"
       :key="index">
-      <img v-lazy="image" />
+      <VanImage :src="image">
+        <template v-slot:loading>
+          <VanLoading type="spinner" size="20" />
+        </template>
+      </VanImage>
     </VanSwipeItem>
   </VanSwipe>
 </template>
@@ -26,7 +30,7 @@ export default {
 .home-swiper {
   height: 400px;
 
-  img {
+  .van-image {
     width: 100%;
     height: 100%;
     overflow: hidden;

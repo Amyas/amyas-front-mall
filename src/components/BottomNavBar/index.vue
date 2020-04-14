@@ -1,10 +1,10 @@
 <template>
   <div class="bottom-nav-bar">
     <VanTabbar>
-      <VanTabbarItem icon="home-o">标签</VanTabbarItem>
-      <VanTabbarItem icon="search">标签</VanTabbarItem>
-      <VanTabbarItem icon="friends-o">标签</VanTabbarItem>
-      <VanTabbarItem icon="setting-o">标签</VanTabbarItem>
+      <VanTabbarItem icon="home-o">首页</VanTabbarItem>
+      <VanTabbarItem icon="wap-nav">分类</VanTabbarItem>
+      <VanTabbarItem icon="shopping-cart">购物车</VanTabbarItem>
+      <VanTabbarItem icon="manager">我的</VanTabbarItem>
     </VanTabbar>
   </div>
 </template>
