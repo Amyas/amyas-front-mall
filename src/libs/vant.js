@@ -15,7 +15,12 @@ import {
   Tabs,
   Tab,
   Card,
-  Sticky
+  Stepper,
+  SwipeCell,
+  Button,
+  SubmitBar,
+  Checkbox,
+  Cell
 } from 'vant'
 
 export default Vue => {
@@ -36,5 +41,10 @@ export default Vue => {
     .use(Tabs)
     .use(Tab)
     .use(Card)
-    .use(Sticky)
+    .use(Stepper)
+    .use(SwipeCell)
+    .use(Button)
+    .use(SubmitBar)
+    .use(Checkbox)
+    .use(Cell)
 }

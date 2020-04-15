@@ -1,3 +1,90 @@
 <template>
-  <div class="categroy">categroy</div>
+  <div class="cart">
+
+    <div class="cart__content">
+      <VanCell
+        v-for="(item, index) in 10"
+        :key="index">
+
+        <VanSwipeCell>
+
+          <VanCard
+            num="2"
+            price="2.00"
+            desc="描述信息"
+            title="商品标题"
+            thumb="https://img.yzcdn.cn/vant/ipad.jpeg">
+            <template #num>
+              <VanStepper v-model="value" disable-input />
+            </template>
+          </VanCard>
+
+          <template #right>
+            <VanButton
+              square
+              text="删除"
+              type="danger"
+              class="delete-button" />
+          </template>
+
+        </VanSwipeCell>
+      </VanCell>
+    </div>
+
+    <VanSubmitBar
+      :price="3050"
+      button-text="提交订单"
+      @submit="onSubmit">
+      <VanCheckbox v-model="checked">全选</VanCheckbox>
+      <template #tip>
+        您还未填写收获地址,
+        <span style="color: #1989fa;" @click="onClickEditAddress">添加地址</span>
+      </template>
+    </VanSubmitBar>
+
+  </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      value: '',
+      checked: false
+    }
+  },
+  methods: {
+    onSubmit () {
+    },
+    onClickEditAddress () {
+
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+.cart {
+  padding-bottom: 100px;
+
+  /deep/ .van-cell {
+    padding: 0;
+  }
+
+  /deep/ .van-cell:not(:last-child)::after {
+    left: 0;
+  }
+
+  /deep/ .van-swipe-cell__right {
+    .van-button {
+      height: 100%;
+    }
+  }
+
+  /deep/ .van-submit-bar {
+    bottom: 100px;
+  }
+}
+
+.cart__content {
+  padding-bottom: 168px;
+}
+</style>

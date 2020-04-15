@@ -23,7 +23,6 @@
               <VanCard
                 v-for="(item, index) in list"
                 :key="index"
-                num="2"
                 price="2.00"
                 desc="描述信息"
                 title="商品标题"
