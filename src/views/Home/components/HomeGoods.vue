@@ -60,6 +60,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home-goods__title {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
   text-align: center;
   color: #38f;
   font-size: 50px;
