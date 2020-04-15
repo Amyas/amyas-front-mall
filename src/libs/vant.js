@@ -9,7 +9,13 @@ import {
   Image,
   Loading,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Sidebar,
+  SidebarItem,
+  Tabs,
+  Tab,
+  Card,
+  Sticky
 } from 'vant'
 
 export default Vue => {
@@ -25,4 +31,10 @@ export default Vue => {
     .use(Loading)
     .use(Tabbar)
     .use(TabbarItem)
+    .use(Sidebar)
+    .use(SidebarItem)
+    .use(Tabs)
+    .use(Tab)
+    .use(Card)
+    .use(Sticky)
 }
