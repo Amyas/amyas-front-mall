@@ -20,7 +20,10 @@ import {
   Button,
   SubmitBar,
   Checkbox,
-  Cell
+  Cell,
+  CellGroup,
+  Radio,
+  RadioGroup
 } from 'vant'
 
 export default Vue => {
@@ -47,4 +50,7 @@ export default Vue => {
     .use(SubmitBar)
     .use(Checkbox)
     .use(Cell)
+    .use(CellGroup)
+    .use(Radio)
+    .use(RadioGroup)
 }

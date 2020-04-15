@@ -2,33 +2,37 @@
   <div class="cart">
 
     <div class="cart__content">
-      <VanCell
-        v-for="(item, index) in 10"
-        :key="index">
+      <VanRadioGroup v-model="radio">
+        <VanRadio
+          name="1"
+          v-for="(item, index) in 10"
+          :key="index">
+          <VanCell>
+            <VanSwipeCell>
 
-        <VanSwipeCell>
+              <VanCard
+                num="2"
+                price="2.00"
+                desc="描述信息"
+                title="商品标题"
+                thumb="https://img.yzcdn.cn/vant/ipad.jpeg">
+                <template #num>
+                  <VanStepper v-model="value" disable-input />
+                </template>
+              </VanCard>
 
-          <VanCard
-            num="2"
-            price="2.00"
-            desc="描述信息"
-            title="商品标题"
-            thumb="https://img.yzcdn.cn/vant/ipad.jpeg">
-            <template #num>
-              <VanStepper v-model="value" disable-input />
-            </template>
-          </VanCard>
+              <template #right>
+                <VanButton
+                  square
+                  text="删除"
+                  type="danger"
+                  class="delete-button" />
+              </template>
 
-          <template #right>
-            <VanButton
-              square
-              text="删除"
-              type="danger"
-              class="delete-button" />
-          </template>
-
-        </VanSwipeCell>
-      </VanCell>
+            </VanSwipeCell>
+          </VanCell>
+        </VanRadio>
+      </VanRadioGroup>
     </div>
 
     <VanSubmitBar
@@ -49,7 +53,8 @@ export default {
   data () {
     return {
       value: '',
-      checked: false
+      checked: false,
+      radio: ''
     }
   },
   methods: {
@@ -81,6 +86,18 @@ export default {
 
   /deep/ .van-submit-bar {
     bottom: 100px;
+  }
+
+  /deep/ .van-radio {
+    background-color: #fafafa;
+  }
+
+  /deep/ .van-radio__icon {
+    padding-left: 40px;
+  }
+
+  /deep/ .van-radio__label {
+    width: 100%;
   }
 }
 
