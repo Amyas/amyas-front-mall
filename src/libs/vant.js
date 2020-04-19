@@ -23,7 +23,8 @@ import {
   Cell,
   CellGroup,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Icon
 } from 'vant'
 
 export default Vue => {
@@ -53,4 +54,5 @@ export default Vue => {
     .use(CellGroup)
     .use(Radio)
     .use(RadioGroup)
+    .use(Icon)
 }
