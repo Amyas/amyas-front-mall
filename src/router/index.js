@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 /* 分类 */const Category = () => import(/* webpackChunkName: "category" */ '@/views/Category')
 /* 购物车 */const Cart = () => import(/* webpackChunkName: "cart" */ '@/views/Cart')
 /* 我的 */const User = () => import(/* webpackChunkName: "user" */ '@/views/User')
+/* 我的 */const video = () => import(/* webpackChunkName: "user" */ '@/views/video')
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/user',
     name: 'User',
     component: User
+  },
+  {
+    path: '/video',
+    name: 'video',
+    component: video
   }
 ]
 
