@@ -7,13 +7,13 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
     port: 8051,
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://test-m-api.weimiao.cn',
-    //     changeOrigin: true,
-    //     secure: true,
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8052',
+        changeOrigin: true,
+        secure: true,
+      }
+    }
   },
   pluginOptions: {
     'style-resources-loader': {
