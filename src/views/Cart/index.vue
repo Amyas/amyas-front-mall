@@ -61,7 +61,12 @@ export default {
     /**
      * @description 提交订单
      */
-    handleSubmit () {
+    async handleSubmit () {
+      await this.$apis.order.create({
+        _user: '5ea7d1d34f994834d085c331',
+        goods_list: this.list.map(v => v._goods)
+      })
+      this.$toast('提交成功')
     },
     /**
      * @description 删除商品
