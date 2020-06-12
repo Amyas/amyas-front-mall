@@ -2,48 +2,35 @@
   <div class="cart">
 
     <div class="cart__content">
-      <VanRadioGroup v-model="radio">
-        <VanRadio
-          name="1"
-          v-for="(item, index) in 10"
-          :key="index">
-          <VanCell>
-            <VanSwipeCell>
-
-              <VanCard
-                num="2"
-                price="2.00"
-                desc="描述信息"
-                title="商品标题"
-                thumb="https://img.yzcdn.cn/vant/ipad.jpeg">
-                <template #num>
-                  <VanStepper v-model="value" disable-input />
-                </template>
-              </VanCard>
-
-              <template #right>
-                <VanButton
-                  square
-                  text="删除"
-                  type="danger"
-                  class="delete-button" />
-              </template>
-
-            </VanSwipeCell>
-          </VanCell>
-        </VanRadio>
-      </VanRadioGroup>
+      <VanSwipeCell
+        v-for="(item, index) in list"
+        :key="index">
+        <VanCard
+          num="1"
+          :price="item._goods.goods_price"
+          :desc="item._goods.goods_intro"
+          :title="item._goods.goods_name"
+          :thumb="item._goods.goods_carousel[0]">
+        </VanCard>
+        <template #right>
+          <VanButton
+            square
+            text="删除"
+            type="danger"
+            class="delete-button"
+            @click="handleRemoveGoods(item)" />
+        </template>
+      </VanSwipeCell>
     </div>
 
     <VanSubmitBar
-      :price="3050"
+      :price="totalPrice * 100"
       button-text="提交订单"
-      @submit="onSubmit">
-      <VanCheckbox v-model="checked">全选</VanCheckbox>
-      <template #tip>
+      @submit="handleSubmit">
+      <!-- <template #tip>
         您还未填写收获地址,
         <span style="color: #1989fa;" @click="onClickEditAddress">添加地址</span>
-      </template>
+      </template> -->
     </VanSubmitBar>
 
   </div>
@@ -52,16 +39,38 @@
 export default {
   data () {
     return {
-      value: '',
-      checked: false,
-      radio: ''
+      list: []
     }
   },
+  computed: {
+    totalPrice () {
+      return this.list.reduce((total, current) => total + current._goods.goods_price, 0)
+    }
+  },
+  created () {
+    this.queryShopCart()
+  },
   methods: {
-    onSubmit () {
+    /**
+     * @description 获取购物车
+     */
+    async queryShopCart () {
+      const data = await this.$apis.uAction.queryShopCart('5ea7d1d34f994834d085c331')
+      this.list = data
     },
-    onClickEditAddress () {
-
+    /**
+     * @description 提交订单
+     */
+    handleSubmit () {
+    },
+    /**
+     * @description 删除商品
+     */
+    handleRemoveGoods (item) {
+      this.$apis.uAction.removeShopCart(item._id).then(() => {
+        this.$toast('删除成功')
+        this.queryShopCart()
+      })
     }
   }
 }

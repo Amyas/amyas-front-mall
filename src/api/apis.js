@@ -8,6 +8,8 @@ export default {
     list: params => service.get('/goods', { params })
   },
   uAction: {
-    addToShopCart: data => service.post('/u-action/add-shop-cart', data)
+    addToShopCart: data => service.post('/u-action/add-shop-cart', data),
+    queryShopCart: (id, params) => service.get('/u-action/query-shop-cart/' + id, { params }),
+    removeShopCart: (id, data) => service.put('/u-action/remove-shop-cart/' + id, data)
   }
 }

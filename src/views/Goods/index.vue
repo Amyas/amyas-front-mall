@@ -21,8 +21,14 @@
     </section>
     <p>{{ goods.goods_detail }}</p>
     <VanGoodsAction>
-      <VanGoodsActionIcon icon="home-o" text="首页" />
-      <VanGoodsActionIcon icon="cart-o" text="购物车" />
+      <VanGoodsActionIcon
+        icon="home-o"
+        text="首页"
+        @click="$router.replace('/')" />
+      <VanGoodsActionIcon
+        icon="cart-o"
+        text="购物车"
+        @click="$router.push({name: 'Cart'})" />
       <VanGoodsActionButton
         type="warning"
         text="加入购物车"

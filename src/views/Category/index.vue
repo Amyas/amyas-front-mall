@@ -29,7 +29,8 @@
             :price="item.goods_price"
             :desc="item.goods_intro"
             :title="item.goods_name"
-            :thumb="item.goods_carousel[0]" />
+            :thumb="item.goods_carousel[0]"
+            @click="handleToGoods(item)" />
         </VanList>
       </div>
     </div>
@@ -79,9 +80,22 @@ export default {
   async created () {
     const cate = await this.$apis.category.list()
     this.categoryList = cate.items
-    // this.currentCate = this.categoryList[this.currentTab]
   },
   methods: {
+    /**
+     * @description 跳转到商品详情
+     */
+    handleToGoods (item) {
+      this.$router.push({
+        name: 'Goods',
+        params: {
+          id: item._id
+        }
+      })
+    },
+    /**
+     * @description 列表加载
+     */
     async onLoad () {
       this.loading = true
       const defaultCate = this.currentCate.children[this.currentTab]
