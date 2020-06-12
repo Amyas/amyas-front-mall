@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 
+// 接口
+import Api from './api'
+
 // 公用样式
 import '@/scss/index.scss'
 
@@ -12,6 +15,8 @@ import registerVant from './libs/vant'
 
 sync(store, router)
 registerVant(Vue)
+Vue.use(Api)
+store.$apis = Api
 
 Vue.config.productionTip = false
 

@@ -2,34 +2,35 @@
   <div class="categroy">
     <div class="categroy-content">
       <div class="categroy-left">
-        <VanSidebar v-model="sidebarActive">
+        <VanSidebar v-model="currentSidebar">
           <VanSidebarItem
-            v-for="(item, index) in 20"
+            v-for="(item, index) in categoryList"
             :key="index"
-            :title="`标签${item}`" />
+            :title="item.name" />
         </VanSidebar>
       </div>
       <div class="categroy-right">
-        <VanTabs>
+        <VanTabs v-model="currentTab">
           <VanTab
-            v-for="(item, index) in 4"
+            v-for="(item, index) in currentCate.children"
             :key="index"
-            :title="`标题${item}`">
-            <VanList
-              v-model="loading"
-              :finished="finished"
-              finished-text="没有更多了"
-              @load="onLoad">
-              <VanCard
-                v-for="(item, index) in list"
-                :key="index"
-                price="2.00"
-                desc="描述信息"
-                title="商品标题"
-                thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
-            </VanList>
+            :title="item.name">
           </VanTab>
         </VanTabs>
+        <VanList
+          v-if="currentCate.children.length"
+          v-model="loading"
+          :finished="finished"
+          finished-text="没有更多了"
+          @load="onLoad">
+          <VanCard
+            v-for="(item, index) in goods"
+            :key="index"
+            :price="item.goods_price"
+            :desc="item.goods_intro"
+            :title="item.goods_name"
+            :thumb="item.goods_carousel[0]" />
+        </VanList>
       </div>
     </div>
   </div>
@@ -38,29 +39,67 @@
 export default {
   data () {
     return {
-      sidebarActive: '',
-      list: [],
+      currentSidebar: 0,
+      currentTab: 0,
       loading: false,
-      finished: false
+      finished: false,
+
+      categoryList: [],
+      goods: [],
+      pageSize: 10,
+      pageNumber: 0,
+      total: 0
     }
   },
+  computed: {
+    currentCate () {
+      return this.categoryList[this.currentSidebar] || { children: [] }
+    }
+  },
+  watch: {
+    currentSidebar () {
+      if (this.currentTab !== 0) {
+        this.currentTab = 0
+      } else {
+        this.goods = []
+        this.total = 0
+        this.finished = false
+        this.pageNumber = 0
+        this.onLoad()
+      }
+    },
+    currentTab (val) {
+      this.goods = []
+      this.total = 0
+      this.finished = false
+      this.pageNumber = 0
+      this.onLoad()
+    }
+  },
+  async created () {
+    const cate = await this.$apis.category.list()
+    this.categoryList = cate.items
+    // this.currentCate = this.categoryList[this.currentTab]
+  },
   methods: {
-    onLoad () {
-      // 异步更新数据
-      // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-      setTimeout(() => {
-        for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1)
-        }
+    async onLoad () {
+      this.loading = true
+      const defaultCate = this.currentCate.children[this.currentTab]
+      const goods = await this.$apis.goods.list({
+        goods_cate: defaultCate._id,
+        pageNumber: ++this.pageNumber,
+        pageSize: this.pageSize
+      })
+      this.goods = this.goods.concat(goods.items)
+      this.total = goods.total
 
-        // 加载状态结束
-        this.loading = false
+      // 加载状态结束
+      this.loading = false
 
-        // 数据全部加载完成
-        if (this.list.length >= 40) {
-          this.finished = true
-        }
-      }, 1000)
+      //   // 数据全部加载完成
+      if (this.goods.length >= this.total) {
+        this.finished = true
+      }
     }
   }
 }
