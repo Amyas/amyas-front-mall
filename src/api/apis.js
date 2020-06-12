@@ -6,5 +6,8 @@ export default {
   },
   goods: {
     list: params => service.get('/goods', { params })
+  },
+  uAction: {
+    addToShopCart: data => service.post('/u-action/add-shop-cart', data)
   }
 }

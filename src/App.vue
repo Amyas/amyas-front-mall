@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <RouterView />
-    <BottomNavBar />
+    <BottomNavBar v-if="$route.meta.navbar" />
   </div>
 </template>
 <script>

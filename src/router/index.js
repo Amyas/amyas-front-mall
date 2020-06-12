@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 /* 分类 */const Category = () => import(/* webpackChunkName: "category" */ '@/views/Category')
 /* 购物车 */const Cart = () => import(/* webpackChunkName: "cart" */ '@/views/Cart')
 /* 我的 */const User = () => import(/* webpackChunkName: "user" */ '@/views/User')
-/* 我的 */const video = () => import(/* webpackChunkName: "user" */ '@/views/video')
+/* 商品详情 */const Goods = () => import(/* webpackChunkName: "goods" */ '@/views/Goods')
 
 Vue.use(VueRouter)
 
@@ -13,27 +13,39 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      navbar: true
+    }
   },
   {
     path: '/category',
     name: 'Category',
-    component: Category
+    component: Category,
+    meta: {
+      navbar: true
+    }
   },
   {
     path: '/cart',
     name: 'Cart',
-    component: Cart
+    component: Cart,
+    meta: {
+      navbar: true
+    }
   },
   {
     path: '/user',
     name: 'User',
-    component: User
+    component: User,
+    meta: {
+      navbar: true
+    }
   },
   {
-    path: '/video',
-    name: 'video',
-    component: video
+    path: '/goods/:id',
+    name: 'Goods',
+    component: Goods
   }
 ]
 

@@ -24,7 +24,11 @@ import {
   CellGroup,
   Radio,
   RadioGroup,
-  Icon
+  Icon,
+  GoodsAction,
+  GoodsActionButton,
+  GoodsActionIcon,
+  Toast
 } from 'vant'
 
 export default Vue => {
@@ -55,4 +59,8 @@ export default Vue => {
     .use(Radio)
     .use(RadioGroup)
     .use(Icon)
+    .use(GoodsAction)
+    .use(GoodsActionButton)
+    .use(GoodsActionIcon)
+    .use(Toast)
 }
